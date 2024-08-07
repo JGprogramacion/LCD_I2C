@@ -1,0 +1,21 @@
+// si no te sale con esta direccion puedes usar (0x3f,16,2) || Arduino Uno LSB --> (0x27,16,2) ProyectoEscolar ||(0x20,16,2) 
+/*
+ Board I2C / TWI pins
+Uno, Nano =   A4 (SDA), A5 (SCL)
+Mega2560  =   20 (SDA), 21 (SCL)
+Leonardo  =   2 (SDA), 3 (SCL)
+Due       =   20 (SDA), 21 (SCL), SDA1, SCL1
+ */
+
+#include <LiquidCrystal_I2C.h> 
+LiquidCrystal_I2C lcd(0x27,16,2);             //Crear objeto con nombre lcd, (dirección de comunicación I2C, cantidadColumnas, CantidadFilas)
+
+void setup() {
+  lcd.init();			                            //inicializar LCD
+  lcd.backlight();		                        //Activar "luz de fondo"
+}
+void loop() { 
+  lcd.setCursor(2,0);                         //Seleccionar coordenadas de pantalla (Columnas, Filas)
+  lcd.print("Hola Mundo :D");                 //Imprimir mensaje.
+  delay(1000);                                //Duración del mensaje.
+}
